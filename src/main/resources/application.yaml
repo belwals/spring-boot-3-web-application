@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: web-application
+  datasource:
+      username: user
+      password: password1
+      url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/test
+      driver-class-name: com.mysql.cj.jdbc.Driver
+  sql:
+    init:
+      mode: always
+  devtools:
+    restart:
+      enabled: true #Only for development so that we can avoid verbose logging
+  profiles:
+    active: dev
+
+#logging:
+#  level:
+#    org:
+#      springframework:
+#        jdbc: DEBUG
+server:
+  port: 8080
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: always
